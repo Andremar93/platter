@@ -51,6 +51,17 @@
 }
 /* Scrollbar styles END */
 
+@media (max-width: 900px) {
+    .text-on-img {
+        
+        font-size: clamp(0.8rem, 2vw, 1.2rem);
+        max-width: 90%; /* Ajusta el ancho máximo relativo al contenedor */
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    
+}
 @media (max-width: 767px) {
   .products-section .container {
     display: flex;
@@ -74,11 +85,12 @@
 
 #show-more {
   margin: 16px auto;
-  padding: 8px 16px;
+  padding: 10px 16px;
   background-color: #000;
   color: white;
   border: none;
-  border-radius: 4px;
+  border-radius: 20px;
   cursor: pointer;
   text-align: center;
+  width: 100%;
 }

@@ -1,22 +1,36 @@
-<section class="products-section page-width md:flex">
+<section class="products-section page-width md:flex mt-8">
   <div class="container mx-auto px-4">
-    <h2 class="text-2xl font-bold mb-4">Best Sellers</h2>
+    <di class="flex justify-between items-baseline">
+        <h2 class="text-3xl font-bold mb-4 py-{{section.settings.title_padding}}">{{section.settings.title}}
+        </h2>
+        <a href="/collections/all" class="text-lg hidden md:block font-semibold text-black hover:text-gray-700">
+            Shop All ➔
+        </a>
+    </di>
+
+
 
     <div class="product-container flex gap-4 overflow-x-scroll">
       {% for block in section.blocks %}
         <div class="product-card group relative flex-none md:w-1/2 md:w-1/5" data-product-index="{{ forloop.index }}">
-           
-          <div class="overflow-hidden relative">
-            <img src="{{ block.settings.product.images[0] | img_url: 'medium' }}" alt="{{ block.settings.product.title }}" class="w-full h-[200px] object-cover transition duration-300 ease-in-out">
-            {%- if block.settings.product.images[1] -%}
-                <img src="{{ block.settings.product.images[1] | img_url: 'medium' }}" alt="{{ block.settings.product.title }} Secondary Image" class="w-full h-[200px] object-cover transition duration-300 ease-in-out absolute top-0 left-0 opacity-0 group-hover:opacity-100">
-            {%- endif -%}
-            <div class="absolute top-2 left-2 text-black text-lg font-semibold px-4 py-2 border border-black bg-white rounded-full">
-              {{ block.settings.product.category}}
-            </div>
-            {%- if block.settings.product.price < block.settings.product.compare_at_price -%}
-              <div class="absolute top-2 right-2 p-2 text-white text-lg font-semibold px-4 py-2 border border-black bg-green-900 rounded-full">Sale</div>
-            {%- endif -%}
+          <a href="{{ block.settings.product.url }}">
+            <div class="overflow-hidden relative">
+              <img src="{{ block.settings.product.images[0] | img_url: 'medium' }}" alt="{{ block.settings.product.title }}" class="w-full rounded-lg h-[200px] object-cover transition duration-300 ease-in-out">
+              {%- if block.settings.product.images[1] -%}
+                <img src="{{ block.settings.product.images[1] | img_url: 'medium' }}" alt="{{ block.settings.product.title }} Secondary Image" class="w-full rounded-lg h-[200px] object-cover transition duration-300 ease-in-out absolute top-0 left-0 opacity-0 group-hover:opacity-100">
+              {%- endif -%}
+              <div class="absolute top-2 left-2 right-2 flex justify-between items-center">
+                {%- unless block.settings.product.category == 'Uncategorized' -%}
+                  <div class="text-on-img absolute top-2 left-2 text-black text-lg font-semibold px-4 py-2 border border-black bg-white rounded-full">
+                    {{ block.settings.product.category }}
+                  </div>
+                {%- endunless -%}
+
+                {%- if block.settings.product.price < block.settings.product.compare_at_price -%}
+                  <div class="text-on-img absolute top-2 right-2 p-2 text-white text-lg font-semibold px-4 py-2 border border-black bg-green-900 rounded-full">Sale</div>
+                {%- endif -%}
+              </div>
+            </a>
           </div>
 
           <div class="product-info mt-2">
@@ -87,7 +101,22 @@
 {% schema %}
   {
     "name": "Product Cards",
-    "settings": [],
+    "settings": [
+      {
+        "type": "text",
+        "id": "title",
+        "label": "Title",
+        "default": "Your Title"
+      }, {
+        "type": "range",
+        "id": "title_padding",
+        "label": "Title Padding",
+        "min": 0,
+        "max": 8,
+        "step": 1,
+        "default": 2
+      }
+    ],
     "blocks": [
       {
         "type": "product",
@@ -107,4 +136,4 @@
       }
     ]
   }
-{% endschema %}}}
+{% endschema %}
