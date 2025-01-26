@@ -1,3 +1,41 @@
+<section class="products-section page-width md:flex">
+  <div class="container mx-auto px-4">
+    <h2 class="text-2xl font-bold mb-4">Best Sellers</h2>
+
+    <div class="product-container flex gap-4 overflow-x-scroll">
+      {% for block in section.blocks %}
+        <div class="product-card group relative flex-none md:w-1/2 md:w-1/5" data-product-index="{{ forloop.index }}">
+
+          <div class="overflow-hidden relative">
+            <img src="{{ block.settings.product.images[0] | img_url: 'medium' }}" alt="{{ block.settings.product.title }}" class="w-full h-[200px] object-cover transition duration-300 ease-in-out">
+            <img src="{{ block.settings.product.images[1] | img_url: 'medium' }}" alt="{{ block.settings.product.title }} Secondary Image" class="w-full h-[200px] object-cover transition duration-300 ease-in-out absolute top-0 left-0 opacity-0 group-hover:opacity-100">
+          </div>
+
+          <div class="product-info mt-2">
+            <p class="text-lg font-medium">{{ block.settings.product.title }}
+            </p>
+            <p class="text-lg text-green-600">{{ block.settings.product.price | money }}
+            </p>
+          </div>
+
+          <div class="product-info mt-2">
+            <p class="text-lg font-medium">{{ block.settings.title }}
+            </p>
+            <p class="text-lg text-green-600">{{ block.settings.price }}
+            </p>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+
+    <button id="show-more" class="btn-primary mt-4 md:hidden">Show More</button>
+  </div>
+</section>
+
+<link rel="stylesheet" href="{{ 'products-section.css' | asset_url }}">
+
+
+
 {% schema %}
   {
     "name": "Product Cards",
