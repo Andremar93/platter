@@ -1,0 +1,73 @@
+.customizable-banner {
+  text-align: center;
+  color: #fff;
+}
+.customizable-banner .main-image {
+  width: 100%;
+  padding-top: 56.25%;
+  background-size: cover;
+  background-position: center;
+  position: relative;
+  min-height: 250px;
+  max-height: 250px;
+}
+.customizable-banner .custom-badge {
+  position: absolute;
+
+}
+.customizable-banner .custom-badge img {
+  max-width: 75px;
+}
+.customizable-banner .custom-badge.top-left {
+  top: 10px;
+  left: 10px;
+}
+.customizable-banner .custom-badge.top-right {
+  top: 10px;
+  right: 10px;
+}
+.customizable-banner .custom-badge.bottom-left {
+  bottom: 10px;
+  left: 10px;
+}
+.customizable-banner .custom-badge.bottom-right {
+  bottom: 10px;
+  right: 10px;
+}
+.customizable-banner .text-content {
+  padding: 20px;
+  background-color: #f9f9f9;
+  color: #000;
+}
+.customizable-banner .text-content h2,
+.customizable-banner .text-content h3,
+.customizable-banner .text-content p,
+.customizable-banner .text-content a {
+  margin: 10px 0;
+}
+.customizable-banner .text-content .button {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: #000;
+  color: #fff;
+  text-decoration: none;
+}
+
+@media (min-width: 768px) {
+  .customizable-banner {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .customizable-banner .main-image {
+    width: 50%;
+    padding-top: 0;
+    min-height: 400px;
+    max-height: 400px;
+  }
+  .customizable-banner .text-content {
+    width: 50%;
+    text-align: left;
+    padding: 40px;
+  }
+}
